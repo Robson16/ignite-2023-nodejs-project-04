@@ -1,6 +1,6 @@
 /**
  * Make some property optional on type
- * 
+ *
  * @example
  * ```typescript
  * type Post {
@@ -8,8 +8,8 @@
  *  name: string;
  *  email: string;
  * }
- * 
- * Optional<Post, 'id' | 'email'> 
+ *
+ * Optional<Post, 'id' | 'email'>
  * ```
  **/
 
