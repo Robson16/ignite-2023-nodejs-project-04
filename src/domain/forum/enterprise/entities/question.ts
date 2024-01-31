@@ -35,12 +35,16 @@ export class Question extends Entity<QuestionProps> {
     return this.props.content
   }
 
+  get createdAt() {
+    return this.props.createdAt
+  }
+
   get updatedAt() {
     return this.props.updatedAt
   }
 
   get isNew(): boolean {
-    return dayjs().diff(this.props.createdAt, 'days') <= 3
+    return dayjs().diff(this.createdAt, 'days') <= 3
   }
 
   get excerpt() {
@@ -78,7 +82,7 @@ export class Question extends Entity<QuestionProps> {
       {
         ...props,
         slug: props.slug ?? Slug.createFromText(props.title),
-        createdAt: new Date(),
+        createdAt: props.createdAt ?? new Date(),
       },
       id,
     )
