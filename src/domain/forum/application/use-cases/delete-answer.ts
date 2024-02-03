@@ -8,13 +8,13 @@ interface DeleteAnswerUseCaseRequest {
 interface DeleteAnswerUseCaseResponse {}
 
 export class DeleteAnswerUseCase {
-  constructor(private answerRepository: AnswersRepository) {}
+  constructor(private answersRepository: AnswersRepository) {}
 
   async execute({
     authorId,
     answerId,
   }: DeleteAnswerUseCaseRequest): Promise<DeleteAnswerUseCaseResponse> {
-    const answer = await this.answerRepository.findById(answerId)
+    const answer = await this.answersRepository.findById(answerId)
 
     if (!answer) {
       throw new Error('Answer not found.')
@@ -24,7 +24,7 @@ export class DeleteAnswerUseCase {
       throw new Error('Not allowed.')
     }
 
-    await this.answerRepository.delete(answer)
+    await this.answersRepository.delete(answer)
 
     return {}
   }
